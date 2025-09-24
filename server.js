@@ -6,24 +6,24 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-const corsOptions = {
-  origin: [
-    'http://localhost:5173',
-    'http://localhost:3000',
-    'https://oleh-khotymchuk.github.io'
-  ],
-  optionsSuccessStatus: 200,
-  credentials: true
-};
-
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  credentials: false
+}));
 app.use(express.json());
 
-// Add CORS headers to all responses (including errors)
+// Additional CORS middleware to ensure headers are always present
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://oleh-khotymchuk.github.io');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
 });
 
 // News API endpoint
