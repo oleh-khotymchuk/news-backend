@@ -19,13 +19,27 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+// Add CORS headers to all responses (including errors)
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://oleh-khotymchuk.github.io');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 // News API endpoint
 app.get('/api/news', async (req, res) => {
   try {
     const { category, q: searchTerm } = req.query;
     const apiKey = process.env.NEWSAPI_KEY;
     
+    console.log('Environment check:', {
+      hasApiKey: !!apiKey,
+      nodeEnv: process.env.NODE_ENV,
+      port: process.env.PORT
+    });
+    
     if (!apiKey) {
+      console.error('NewsAPI key not found in environment variables');
       return res.status(400).json({ error: 'NewsAPI key not configured' });
     }
     
