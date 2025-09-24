@@ -19,6 +19,7 @@ A Node.js Express server that provides news data from NewsAPI with CORS support 
 - `GET /api/news?q=searchterm` - Search news articles
 
 ### Supported Categories
+
 - business
 - entertainment
 - general
@@ -30,12 +31,14 @@ A Node.js Express server that provides news data from NewsAPI with CORS support 
 ## Setup
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Configure environment variables:**
    Create a `.env` file in the root directory:
+
    ```
    NEWSAPI_KEY=your_newsapi_key_here
    PORT=3001
@@ -49,11 +52,13 @@ A Node.js Express server that provides news data from NewsAPI with CORS support 
 ## Running the Server
 
 **Development mode:**
+
 ```bash
 npm run dev
 ```
 
 **Production mode:**
+
 ```bash
 npm start
 ```
@@ -68,6 +73,7 @@ The server will start on `http://localhost:3001` (or your configured PORT).
 ## Response Format
 
 ### Success Response
+
 ```json
 {
   "articles": [
@@ -86,6 +92,7 @@ The server will start on `http://localhost:3001` (or your configured PORT).
 ```
 
 ### Error Response
+
 ```json
 {
   "error": "Error message"
@@ -95,6 +102,7 @@ The server will start on `http://localhost:3001` (or your configured PORT).
 ## Deployment
 
 This server can be deployed to various platforms:
+
 - Vercel
 - Railway
 - Render

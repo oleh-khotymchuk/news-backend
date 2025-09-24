@@ -6,7 +6,17 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://oleh-khotymchuk.github.io'
+  ],
+  optionsSuccessStatus: 200,
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // News API endpoint
