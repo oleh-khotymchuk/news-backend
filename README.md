@@ -1,14 +1,6 @@
 # News Backend API
 
-A Node.js Express server that provides news data from NewsAPI with CORS support and deduplication.
-
-## Features
-
-- **News API Integration**: Fetches news from NewsAPI.org
-- **CORS Enabled**: Allows cross-origin requests from frontend applications
-- **Article Deduplication**: Automatically removes duplicate articles
-- **Environment Variables**: Secure API key management
-- **Multiple Endpoints**: Support for categories and search queries
+A Node.js Express server that provides news data from NewsAPI.
 
 ## API Endpoints
 
@@ -84,25 +76,3 @@ The server will start on `http://localhost:3001` (or your configured PORT).
   ]
 }
 ```
-
-### Error Response
-```json
-{
-  "error": "Error message"
-}
-```
-
-## Deployment
-
-This server can be deployed to various platforms:
-- Vercel
-- Railway
-- Render
-- Heroku
-- AWS Lambda
-
-Make sure to set the `NEWSAPI_KEY` environment variable in your deployment platform.
-
-## License
-
-ISC
